@@ -9,7 +9,8 @@ const connectDB = async () => {
   }
 };
 
-// export default connectDB;
+export default connectDB;
+
 //************************************************************************** */
 // import mongoose from "mongoose";
 // import dotenv from "dotenv";

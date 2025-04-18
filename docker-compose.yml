@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./SIH_backend
+    container_name: SIH_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb+srv://amiteshwar551:GNKL9Izg96jgjc7h@cluster0.tfbg2mr.mongodb.net/final_sih
+    restart: unless-stopped
+
+  frontend:
+    build: ./SIH_frontend
+    container_name: SIH_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

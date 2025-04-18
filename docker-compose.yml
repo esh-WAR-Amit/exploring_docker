@@ -16,8 +16,8 @@ services:
       - "8000:8000"
     depends_on:
       - mongo
-    environment:
-      - MONGO_URL=mongodb+srv://amiteshwar551:GNKL9Izg96jgjc7h@cluster0.tfbg2mr.mongodb.net/final_sih
+    env_file:
+      - ./SIH_backend/.env
     restart: unless-stopped
 
   frontend:
